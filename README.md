@@ -33,17 +33,29 @@
   - **Right Click:** Quick pet (sends desktop notification).
   - **Middle Click:** Cycle to next companion.
 
-### 🚀 Installation
+### 🚀 Installation & Removal
 
-Install directly with the Omarchy CLI:
-
+#### Install
 ```bash
-omarchy plugin add https://github.com/YOUR_USERNAME/omarchy-pokemon-companion.git --enable
+omarchy plugin add https://github.com/aletgdev/omarchy-pokemon-companion.git --enable
 ```
 
-Or move it to your preferred bar section (left, center, or right):
+#### Move section
 ```bash
 omarchy bar move aletgdev.pokemon-companion --section left
+```
+
+#### Disable
+```bash
+omarchy plugin disable aletgdev.pokemon-companion
+```
+
+#### Uninstall / Remove
+```bash
+omarchy plugin remove aletgdev.pokemon-companion
+
+# Optional: remove saved progress
+rm -f ~/.config/omarchy/pokemon-companion.json
 ```
 
 ---
@@ -66,17 +78,29 @@ omarchy bar move aletgdev.pokemon-companion --section left
   - **Clic derecho:** Acariciar rápido (notificación de escritorio).
   - **Clic central:** Cambiar al siguiente Pokémon.
 
-### 🚀 Instalación
+### 🚀 Instalación y Desinstalación
 
-Instálalo directamente con el CLI de Omarchy:
-
+#### Instalar
 ```bash
-omarchy plugin add https://github.com/YOUR_USERNAME/omarchy-pokemon-companion.git --enable
+omarchy plugin add https://github.com/aletgdev/omarchy-pokemon-companion.git --enable
 ```
 
-O muévelo a la sección que prefieras de tu barra:
+#### Mover de sección
 ```bash
 omarchy bar move aletgdev.pokemon-companion --section left
+```
+
+#### Desactivar
+```bash
+omarchy plugin disable aletgdev.pokemon-companion
+```
+
+#### Desinstalar completamente
+```bash
+omarchy plugin remove aletgdev.pokemon-companion
+
+# Opcional: borrar datos guardados
+rm -f ~/.config/omarchy/pokemon-companion.json
 ```
 
 ---
