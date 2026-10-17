@@ -1,6 +1,12 @@
 # 🎮 Pokémon Companion for Omarchy / para Omarchy
 
 <p align="center">
+  <a href="https://ko-fi.com/alejandrotg"><img src="https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=flat-square&logo=kofi&logoColor=white" alt="Ko-fi"/></a>
+  <a href="https://github.com/sponsors/aletgdev"><img src="https://img.shields.io/badge/Sponsor-GitHub-ea4aaa?style=flat-square&logo=github&logoColor=white" alt="GitHub Sponsors"/></a>
+  <img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="MIT License"/>
+</p>
+
+<p align="center">
   <img src="assets/preview.png" alt="Pokémon Companion Preview" width="560"/>
 </p>
 
@@ -98,6 +104,17 @@ omarchy plugin remove aletgdev.pokemon-companion
 # Opcional: borrar datos guardados
 rm -f ~/.config/omarchy/pokemon-companion.json
 ```
+
+---
+
+## ☕ Support / Apoyo
+
+If you enjoy this plugin and want to support the developer creating more open-source tools for Linux and Omarchy, consider buying a coffee or sponsoring! / *Si disfrutas de este plugin y quieres apoyar al desarrollador para crear más herramientas open-source para Linux y Omarchy, ¡invítale a un café o patrocínalo!*
+
+<p align="left">
+  <a href="https://ko-fi.com/alejandrotg"><img src="https://img.shields.io/badge/Support%20on-Ko--fi-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white" alt="Support on Ko-fi"/></a>&nbsp;&nbsp;
+  <a href="https://github.com/sponsors/aletgdev"><img src="https://img.shields.io/badge/Sponsor%20on-GitHub-ea4aaa?style=for-the-badge&logo=github&logoColor=white" alt="Sponsor on GitHub"/></a>
+</p>
 
 ---
 
