@@ -10,8 +10,11 @@ BarWidget {
   moduleName: "aletgdev.pokemon-companion"
 
   property var state: PK.defaultState()
-  readonly property var pokemon: PK.getPokemonById(state.pokemonId)
-  readonly property var strings: PK.getStrings(state.language || "es")
+  property string currentLanguage: "es"
+  property int currentPokemonId: 25
+
+  readonly property var pokemon: PK.getPokemonById(currentPokemonId)
+  readonly property var strings: PK.getStrings(currentLanguage)
 
   function injectPanel() {
     var target = panelLoader.item
@@ -48,12 +51,13 @@ BarWidget {
   }
 
   function nextCompanion() {
-    var next = PK.nextPokemon(root.state.pokemonId)
-    root.state.pokemonId = next.id
+    var next = PK.nextPokemon(root.currentPokemonId)
+    root.currentPokemonId = next.id
     saveState()
   }
 
   function quickPet() {
+    root.state.language = root.currentLanguage
     var res = PK.pet(root.state)
     saveState()
     if (root.bar) {
@@ -67,11 +71,15 @@ BarWidget {
       var parsed = JSON.parse(rawJson)
       if (parsed && typeof parsed.pokemonId === "number") {
         root.state = parsed
+        root.currentPokemonId = parsed.pokemonId
+        if (parsed.language) root.currentLanguage = parsed.language
       }
     } catch (e) {}
   }
 
   function saveState() {
+    root.state.language = root.currentLanguage
+    root.state.pokemonId = root.currentPokemonId
     stateFile.setText(JSON.stringify(root.state, null, 2) + "\n")
   }
 

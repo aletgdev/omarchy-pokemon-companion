@@ -17,8 +17,11 @@ Panel {
   readonly property var barIdentity: hostWidget || root
 
   property var state: PK.defaultState()
-  readonly property var currentPokemon: PK.getPokemonById(state.pokemonId)
-  readonly property var strings: PK.getStrings(state.language || "es")
+  property string currentLanguage: "es"
+  property int currentPokemonId: 25
+
+  readonly property var currentPokemon: PK.getPokemonById(currentPokemonId)
+  readonly property var strings: PK.getStrings(currentLanguage)
   property string message: (currentPokemon ? currentPokemon.cry : "") + " ¡" + (currentPokemon ? currentPokemon.name : "") + " te acompaña fielmente!"
 
   function loadState(rawJson) {
@@ -27,37 +30,44 @@ Panel {
       var parsed = JSON.parse(rawJson)
       if (parsed && typeof parsed.pokemonId === "number") {
         root.state = parsed
+        root.currentPokemonId = parsed.pokemonId
+        if (parsed.language) root.currentLanguage = parsed.language
       }
     } catch (e) {}
   }
 
   function saveState() {
+    root.state.language = root.currentLanguage
+    root.state.pokemonId = root.currentPokemonId
     stateFile.setText(JSON.stringify(root.state, null, 2) + "\n")
   }
 
   function toggleLanguage() {
-    root.state.language = (root.state.language === "en" ? "es" : "en")
+    var next = (currentLanguage === "en" ? "es" : "en")
+    currentLanguage = next
+    var s = PK.getStrings(next)
+    root.message = s.companionDefault.replace("{cry}", root.currentPokemon ? root.currentPokemon.cry : "").replace("{name}", root.currentPokemon ? root.currentPokemon.name : "")
     saveState()
-    var s = PK.getStrings(root.state.language)
-    root.message = s.companionDefault.replace("{cry}", root.currentPokemon.cry).replace("{name}", root.currentPokemon.name)
   }
 
   function feed() {
+    root.state.language = root.currentLanguage
     var res = PK.feedBerry(root.state)
     root.message = res.message
     saveState()
   }
 
   function pet() {
+    root.state.language = root.currentLanguage
     var res = PK.pet(root.state)
     root.message = res.message
     saveState()
   }
 
   function choosePokemon(id) {
-    root.state.pokemonId = id
+    root.currentPokemonId = id
     var pk = PK.getPokemonById(id)
-    var s = PK.getStrings(root.state.language || "es")
+    var s = PK.getStrings(root.currentLanguage)
     root.message = s.companionChosen.replace("{name}", pk.name).replace("{cry}", pk.cry)
     saveState()
   }
@@ -65,7 +75,7 @@ Panel {
   function randomEncounter() {
     var randomIdx = Math.floor(Math.random() * PK.POKEMON_ROSTER.length)
     var wild = PK.POKEMON_ROSTER[randomIdx]
-    var s = PK.getStrings(root.state.language || "es")
+    var s = PK.getStrings(root.currentLanguage)
     root.message = s.wildAppeared.replace("{name}", wild.name)
   }
 
@@ -120,7 +130,7 @@ Panel {
           Text {
             id: langText
             anchors.centerIn: parent
-            text: (root.state && root.state.language === "en") ? "🌐 EN | ES" : "🌐 ES | EN"
+            text: root.currentLanguage === "en" ? "🌐 EN | ES" : "🌐 ES | EN"
             color: Color.foreground
             font.family: Style.font.family
             font.pixelSize: Style.font.caption - 1
@@ -209,7 +219,7 @@ Panel {
 
             Text {
               readonly property string genusText: root.currentPokemon && root.currentPokemon.genus
-                ? (root.currentPokemon.genus[root.state.language || "es"] || root.currentPokemon.genus.es)
+                ? (root.currentPokemon.genus[root.currentLanguage] || root.currentPokemon.genus.es)
                 : ""
               text: genusText + " • #" + (root.currentPokemon ? (root.currentPokemon.id < 10 ? "00" : (root.currentPokemon.id < 100 ? "0" : "")) + root.currentPokemon.id : "")
               color: Util.alpha(Color.foreground, 0.6)
@@ -222,7 +232,7 @@ Panel {
               spacing: Style.space(4)
               Repeater {
                 model: root.currentPokemon && root.currentPokemon.types
-                  ? (root.currentPokemon.types[root.state.language || "es"] || root.currentPokemon.types.es)
+                  ? (root.currentPokemon.types[root.currentLanguage] || root.currentPokemon.types.es)
                   : []
                 Rectangle {
                   height: Style.space(16)
@@ -485,11 +495,11 @@ Panel {
               width: (mainCol.width - Style.space(24)) / 5
               height: Style.space(44)
               radius: Style.cornerRadius
-              color: root.state && root.state.pokemonId === modelData.id
+              color: root.currentPokemonId === modelData.id
                 ? Util.alpha(modelData.color || Color.accent, 0.25)
                 : (itemArea.containsMouse ? Util.alpha(Color.foreground, 0.1) : Util.alpha(Color.foreground, 0.04))
               border.width: 1
-              border.color: root.state && root.state.pokemonId === modelData.id
+              border.color: root.currentPokemonId === modelData.id
                 ? (modelData.color || Color.accent)
                 : Util.alpha(Color.accent, 0.2)
 
@@ -500,7 +510,7 @@ Panel {
                 source: Qt.resolvedUrl("assets/sprites/" + modelData.id + ".gif")
                 fillMode: Image.PreserveAspectFit
                 smooth: false
-                playing: itemArea.containsMouse || (root.state && root.state.pokemonId === modelData.id)
+                playing: itemArea.containsMouse || (root.currentPokemonId === modelData.id)
               }
 
               MouseArea {
