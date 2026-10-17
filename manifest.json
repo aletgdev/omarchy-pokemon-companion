@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "aletgdev.pokemon-companion",
+  "name": "Pokémon Companion",
+  "version": "1.0.0",
+  "author": "aletgdev",
+  "description": "Tu compañero Pokémon interactivo en la barra de Omarchy con cuidados, amistad y Pokédex diaria",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Pokémon Companion",
+    "description": "Compañero Pokémon en la barra con panel de cuidados",
+    "category": "Games",
+    "defaultSection": "left",
+    "allowMultiple": false
+  }
+}

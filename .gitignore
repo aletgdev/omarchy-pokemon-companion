@@ -1,0 +1,4 @@
+# Omarchy Pokemon Companion
+*.tmp
+*.log
+.DS_Store
