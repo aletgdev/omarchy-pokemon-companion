@@ -2,7 +2,6 @@
 
 <p align="center">
   <a href="https://ko-fi.com/alejandrotg"><img src="https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=flat-square&logo=kofi&logoColor=white" alt="Ko-fi"/></a>
-  <a href="https://github.com/sponsors/aletgdev"><img src="https://img.shields.io/badge/Sponsor-GitHub-ea4aaa?style=flat-square&logo=github&logoColor=white" alt="GitHub Sponsors"/></a>
   <img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="MIT License"/>
 </p>
 
@@ -113,7 +112,6 @@ If you enjoy this plugin and want to support the developer creating more open-so
 
 <p align="left">
   <a href="https://ko-fi.com/alejandrotg"><img src="https://img.shields.io/badge/Support%20on-Ko--fi-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white" alt="Support on Ko-fi"/></a>&nbsp;&nbsp;
-  <a href="https://github.com/sponsors/aletgdev"><img src="https://img.shields.io/badge/Sponsor%20on-GitHub-ea4aaa?style=for-the-badge&logo=github&logoColor=white" alt="Sponsor on GitHub"/></a>
 </p>
 
 ---
