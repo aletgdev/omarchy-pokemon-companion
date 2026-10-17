@@ -1,8 +1,7 @@
 # 🎮 Pokémon Companion for Omarchy / para Omarchy
 
 <p align="center">
-  <img src="assets/bar-preview.png" alt="Bar Widget Preview"/><br/><br/>
-  <img src="assets/preview.png" alt="Panel Preview" width="380"/>
+  <img src="assets/preview.png" alt="Pokémon Companion Preview" width="560"/>
 </p>
 
 <p align="center">
