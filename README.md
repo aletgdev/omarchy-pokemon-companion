@@ -1,11 +1,8 @@
 # 🎮 Pokémon Companion for Omarchy / para Omarchy
 
 <p align="center">
-  <img src="assets/sprites/25.gif" alt="Pikachu" width="64"/>
-  <img src="assets/sprites/133.gif" alt="Eevee" width="64"/>
-  <img src="assets/sprites/1.gif" alt="Bulbasaur" width="64"/>
-  <img src="assets/sprites/4.gif" alt="Charmander" width="64"/>
-  <img src="assets/sprites/7.gif" alt="Squirtle" width="64"/>
+  <img src="assets/bar-preview.png" alt="Bar Widget Preview"/><br/><br/>
+  <img src="assets/preview.png" alt="Panel Preview" width="380"/>
 </p>
 
 <p align="center">
